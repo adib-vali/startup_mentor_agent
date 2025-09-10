@@ -9,7 +9,7 @@ from app.config import settings
 
 
 class AnalysisInput(BaseModel):
-	startup_description: str = Field(..., description="A clear and comprehensive description of the startup idea")
+	startup_description: str = Field(..., description="A clear, detailed and comprehensive description of the startup idea. ")
 	analysis_mode: str = Field(default="advanced", description="Analysis depth, e.g., 'basic' or 'advanced'")
 	include_external_research: bool = Field(default=True, description="Whether to include external research in analysis")
 
@@ -22,6 +22,7 @@ class ExternalAnalysisTool(BaseTool):
 	description = (
 		"Use this tool when you have a sufficiently detailed startup description and want a structured analysis. "
 		"Provide: startup_description, analysis_mode, include_external_research."
+		"It should include the problem, solution, market, competition, and other relevant information. all startup details should be included in the description. this tool need all details to be able to analyze the startup so dont summerise any input details. also this tool need team backgrounds and team members details."
 	)
 	args_schema: type[BaseModel] = AnalysisInput
 
